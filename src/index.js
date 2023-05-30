@@ -1,10 +1,11 @@
 import { createRequire } from "module";
 import importAsString from "@reactioncommerce/api-utils/importAsString.js";
-import myResolvers from "./resolvers/resolvers.js"
-const mySchema = importAsString("./schema/schema.graphql");
 const require = createRequire(import.meta.url);
 const pkg = require("../package.json");
-
+import schemas from "./schemas/index.js";
+import resolvers from "./resolvers/index.js";
+import mutations from "./mutations/index.js";
+import queries from "./queries/index.js";
 
 async function register(app) {
   await app.registerPlugin({
@@ -19,9 +20,11 @@ async function register(app) {
       },
     },
     graphQL: {
-      schemas: [mySchema],
-      resolvers: myResolvers,
-    }
+      schemas,
+      resolvers,
+    },
+    mutations,
+    queries,
   });
 }
 export default register;

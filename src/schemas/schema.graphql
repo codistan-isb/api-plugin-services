@@ -10,18 +10,17 @@ type ServiceOption {
   price: Float
 }
 
+input ServiceOptionInput {
+  name: String
+  price: Float
+}
 type Query {
-  service(id: ID): [Service]
-  services: [Service]
+  # service(id: ID): [Service]
+  getAllServices: [Service]
 }
 
 type Mutation {
   createService(name: String, options: [ServiceOptionInput]): Service
   updateService(id: ID, name: String, options: [ServiceOptionInput]): Service
-  deleteService(id: ID): ID
-}
-
-input ServiceOptionInput {
-  name: String
-  price: Float
+  deleteService(id: ID): Boolean
 }
