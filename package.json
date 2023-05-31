@@ -2,7 +2,7 @@
   "name": "@codistan-isb/api-plugin-services",
   "description": "Boilerplate Services plugin for the Reaction API",
   "label": "Services Plugin",
-  "version": "4.0.1-development",
+  "version": "4.0.2-development",
   "main": "index.js",
   "type": "module",
   "engines": {

@@ -17,7 +17,7 @@ input ServiceOptionInput {
   price: Float
 }
 type Query {
-  # service(id: ID): [Service]
+  getServiceByID(id: ID!): Service
   getAllServices: [Service]!
 }
 
