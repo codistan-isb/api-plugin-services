@@ -1,20 +1,49 @@
 type Service {
-  _id: ID!
+  _id: ID
   name: String
+  ancestorId: [String]
   options: [ServiceOption]
+  description: String
   createdAt: DateTime
   updatedAt: DateTime
+  imageLink: String
 }
-
-type ServiceOption {
-  id: ID!
+input serviceOptionInput {
   name: String
   price: Float
+  description: String
+  imageLink: String
+  ancestorId: [String]
 }
-
+type ServiceOption {
+  id: ID
+  name: String
+  price: Float
+  imageLink: String
+  description: String
+  ancestorId: [String]
+}
+input CreateServiceInput {
+  service: ServiceInput
+  shopId: ID!
+}
+input ServiceInput {
+  name: String
+  options: [serviceOptionInput]
+  description: String
+  ancestorId: [String]
+  imageLink: String
+}
 input ServiceOptionInput {
   name: String
   price: Float
+  description: String
+  imageLink: String
+}
+input UpdateServiceInput {
+  service: ServiceInput
+  productId: ID!
+  shopId: ID!
 }
 type Query {
   getServiceByID(id: ID!): Service
@@ -22,7 +51,7 @@ type Query {
 }
 
 type Mutation {
-  createService(name: String, options: [ServiceOptionInput]): Service!
-  updateService(id: ID!, name: String, options: [ServiceOptionInput]): Service!
+  createService(input: CreateServiceInput): Service
+  updateService(input: UpdateServiceInput): Service
   deleteService(id: ID!): Boolean!
 }

@@ -1,4 +1,5 @@
 import ReactionError from "@reactioncommerce/reaction-error";
+
 export default async function getServiceByID(parent, args, context, info) {
     if (context.user === undefined || context.user === null) {
         throw new ReactionError(
