@@ -8,7 +8,7 @@ export default async function updateService(context, input) {
     productId
   } = input;
   let { Service } = context.collections;
-  const currentService = await Service.findOne({ _id: productId, shopId });
+  const currentService = await Service.findOne({ _id: ObjectID.ObjectId(productId) });
   if (!currentService) throw new ReactionError("not-found", "Product not found");
 
   if (Object.keys(ServiceInput).length === 0) {
@@ -18,7 +18,7 @@ export default async function updateService(context, input) {
   const modifier = { $set: ServiceInput };
   const UpdateServiceResponse = await Service.findOneAndUpdate(
     {
-      _id: productId,
+      _id: ObjectID.ObjectId(productId),
       shopId
     },
     modifier,
