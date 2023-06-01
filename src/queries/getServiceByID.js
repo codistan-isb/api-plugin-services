@@ -1,4 +1,5 @@
 import ObjectID from "mongodb";
+import ReactionError from "@reactioncommerce/reaction-error";
 
 export default async function getServiceByID(id, context) {
     let { Service } = context.collections;
@@ -7,6 +8,6 @@ export default async function getServiceByID(id, context) {
     if (allServices) {
         return allServices;
     } else {
-        return null;
+        throw new ReactionError("not-found", "Service not found");
     }
 }

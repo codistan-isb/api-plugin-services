@@ -5,11 +5,11 @@ export default async function updateService(context, input) {
   const {
     service: ServiceInput,
     shopId,
-    productId
+    serviceId
   } = input;
   let { Service } = context.collections;
-  const currentService = await Service.findOne({ _id: ObjectID.ObjectId(productId) });
-  if (!currentService) throw new ReactionError("not-found", "Product not found");
+  const currentService = await Service.findOne({ _id: ObjectID.ObjectId(serviceId) });
+  if (!currentService) throw new ReactionError("not-found", "Service not found");
 
   if (Object.keys(ServiceInput).length === 0) {
     throw new ReactionError("invalid-param", "At least one field to update must be provided");
@@ -18,7 +18,7 @@ export default async function updateService(context, input) {
   const modifier = { $set: ServiceInput };
   const UpdateServiceResponse = await Service.findOneAndUpdate(
     {
-      _id: ObjectID.ObjectId(productId),
+      _id: ObjectID.ObjectId(serviceId),
       shopId
     },
     modifier,
@@ -31,7 +31,7 @@ export default async function updateService(context, input) {
     return UpdateServiceResponse.value
   }
   else {
-    return null
+    throw new ReactionError("server-error", "Try again later");
   }
 
 

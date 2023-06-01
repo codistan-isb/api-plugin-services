@@ -42,7 +42,7 @@ input ServiceOptionInput {
 }
 input UpdateServiceInput {
   service: ServiceInput
-  productId: ID!
+  serviceId: ID!
   shopId: ID!
 }
 type Query {

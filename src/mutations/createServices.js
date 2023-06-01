@@ -1,4 +1,4 @@
-import Random from "@reactioncommerce/random";
+// import Random from "@reactioncommerce/random";
 // import { encodeProductOpaqueId } from "../xforms/id.js";
 
 export default async function createServices(context, input) {
@@ -19,7 +19,7 @@ export default async function createServices(context, input) {
     updatedAt: createdAt,
   };
   let createdServices = await Service.insertOne(createService);
-  console.log("createdServices ", createdServices.ops[0]._id)
+  // console.log("createdServices ", createdServices.ops[0]._id)
   // return {
   //   _id: encodeProductOpaqueId(createdServices.ops[0]._id),
   //   ...createdServices.ops[0]
